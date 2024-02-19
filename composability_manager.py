@@ -9,23 +9,19 @@ import socket
 import json
 import logging
 import threading
-
-def logging():
-    pass
+import composability_manager_parser
 
 def ERROR(error_string):
     print({error_string})
-    log_send ("Closing: {socket.gethostname()} Composability Manager on: {SERVERADDRESS}) due to error")
-            
-    return 1
+    sys.exit() 
 
-n = len(sys.argv)
-
-if n >= 2:
-    PORT=int(sys.argv[1])
-else:
+paramnum = len(sys.argv)
+print (f"the number of parameters passed in is",paramnum)
+if paramnum < 2:
     ERROR("Usage python3 composability_manager.py <Port Number>")
+PORT=int(sys.argv[1])
 
+#PORT=9499
 SERVERIP=socket.gethostbyname(socket.gethostname())
 SERVERADDRESS=(SERVERIP,PORT)
 
