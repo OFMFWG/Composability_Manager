@@ -38,7 +38,7 @@ def main():
     server.listen()
     while True:
             conn, addr=server.accept()
-            thread=threading.Thread(target=command_parser,args=(conn,addr))
+            thread=threading.Thread(target=client_connection,args=(conn,addr))
             thread.start()
 
 
